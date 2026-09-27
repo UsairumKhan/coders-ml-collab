@@ -1,0 +1,30 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Data and models (Tracked by DVC, NOT Git)
+data/
+models/
+*.csv
+*.parquet
+*.pkl
+*.joblib
+*.h5
+
+# Credentials & local DVC config
+.env
+.dvc/config.local
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Experiment trackers
+mlruns/
+.wandb/
