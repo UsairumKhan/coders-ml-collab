@@ -7,8 +7,6 @@ venv/
 env/
 
 # Data and models (Tracked by DVC, NOT Git)
-data/
-models/
 *.csv
 *.parquet
 *.pkl
