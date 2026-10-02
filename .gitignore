@@ -26,3 +26,4 @@ Thumbs.db
 # Experiment trackers
 mlruns/
 .wandb/
+.ipynb_checkpoints/
