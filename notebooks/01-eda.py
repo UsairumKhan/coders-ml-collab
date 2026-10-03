@@ -20,6 +20,8 @@ sys.path.insert(0, "..")
 
 import pandas as pd
 
+from src.cleaning import clean_telco
+
 # %%
 df = pd.read_csv("../data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv")
 print(df.shape)
@@ -33,8 +35,6 @@ df.isna().sum()
 df[df["TotalCharges"].str.strip() == ""][["customerID", "tenure", "TotalCharges"]]
 
 # %%
-from src.cleaning import clean_telco  # noqa: E402
-
 df = clean_telco(df)
 df["TotalCharges"].describe()
 
