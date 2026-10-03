@@ -134,5 +134,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Smoke Training
-        run: python src/train.py
+      - name: Create small sample dataset
+        run: python scripts/make_sample_data.py
+
+      - name: Run smoke pipeline (prepare, train, evaluate)
+        run: |
+          python -m src.prepare
+          python -m src.train
+          python -m src.evaluate
