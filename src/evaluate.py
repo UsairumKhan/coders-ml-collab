@@ -26,7 +26,8 @@ def git_sha() -> str:
 
 def code_is_dirty() -> bool:
     result = subprocess.run(
-        ["git", "diff", "--quiet", "HEAD", "--", "src", "params.yaml", "dvc.yaml"]
+        ["git", "diff", "--quiet", "HEAD", "--", "src", "params.yaml", "dvc.yaml"],
+        check=False,
     )
     return result.returncode != 0
 
