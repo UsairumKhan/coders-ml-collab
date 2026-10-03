@@ -1,0 +1,35 @@
+stages:
+  prepare:
+    cmd: python -m src.prepare
+    deps:
+      - src/prepare.py
+      - src/cleaning.py
+      - ${data.raw_path}
+    params:
+      - seed
+      - split.test_size
+    outs:
+      - ${data.prepared_dir}
+
+  train:
+    cmd: python -m src.train
+    deps:
+      - src/train.py
+      - ${data.prepared_dir}/train.csv
+    params:
+      - seed
+      - train
+    outs:
+      - models/model.joblib
+
+  evaluate:
+    cmd: python -m src.evaluate
+    deps:
+      - src/evaluate.py
+      - models/model.joblib
+      - ${data.prepared_dir}/test.csv
+    params:
+      - seed
+    metrics:
+      - metrics.json:
+          cache: false
