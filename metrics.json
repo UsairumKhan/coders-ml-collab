@@ -1,10 +1,10 @@
 {
-  "accuracy": 0.8027,
-  "precision": 0.6846,
-  "recall": 0.4759,
-  "f1": 0.5615,
-  "roc_auc": 0.8416,
+  "accuracy": 0.8041,
+  "precision": 0.6763,
+  "recall": 0.5027,
+  "f1": 0.5767,
+  "roc_auc": 0.8431,
   "seed": 42,
-  "commit_sha": "e6d0eff0cbc4302b265e085aff0f24f9cc643277",
+  "commit_sha": "ddc73a432fe848d477c312cd2b9ad4c11d6776df",
   "code_dirty": false
 }
