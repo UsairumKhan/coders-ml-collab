@@ -33,3 +33,8 @@ We strictly follow **Conventional Commits**:
 2. **Review Policy:** Every PR requires at least **1 approval** from a teammate.
 3. **PR Merge Decision:** All PRs into `dev` must be **Squash-Merged** to keep integration history clean and atomic.
 4. **DVC Check:** Always run `dvc push` **BEFORE** opening a `data/` or model-related PR to prevent broken data pointers.
+
+## Lessons learned (Phase 7)
+- After merging or rebasing dev into a branch, rerun dvc repro --force and commit dvc.lock and metrics.json so the committed metrics match the code and data.
+- Take before numbers from dvc metrics diff origin/dev --md, not from older runs or chat messages.
+- If dev's baseline params change, announce it in the group chat so experiments are rerun on a fresh exp/ branch from the new dev.
