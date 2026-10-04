@@ -8,3 +8,5 @@
 
 Winner: md12 (max_depth=12), f1 0.5677 vs baseline 0.5426, driven by recall (0.468 -> 0.521).
 Trade-off: roc_auc fell (0.8344 -> 0.8237) and accuracy dipped slightly, so deeper trees may overfit; md8 has the best roc_auc but a lower f1.
+
+Abandoned because: dev moved to max_depth=8, n_estimators=200 (PR #10) after these runs, so this table (baseline max_depth=6, n_estimators=100) is no longer comparable to current dev. Re-run on a fresh branch from the updated dev.
