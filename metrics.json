@@ -1,4 +1,5 @@
 {
+{
   "accuracy": 0.8041,
   "precision": 0.6763,
   "recall": 0.5027,
@@ -6,5 +7,8 @@
   "roc_auc": 0.8431,
   "seed": 42,
   "commit_sha": "ddc73a432fe848d477c312cd2b9ad4c11d6776df",
+  "code_dirty": false
+}
+
   "code_dirty": false
 }
