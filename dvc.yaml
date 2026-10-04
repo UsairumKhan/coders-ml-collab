@@ -4,18 +4,19 @@ stages:
     deps:
       - src/prepare.py
       - src/cleaning.py
-      - ${data.raw_path}
+      - data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
     params:
       - seed
       - split.test_size
     outs:
-      - ${data.prepared_dir}
+      - data/prepared/train.csv
+      - data/prepared/test.csv
 
   train:
     cmd: python -m src.train
     deps:
       - src/train.py
-      - ${data.prepared_dir}/train.csv
+      - data/prepared/train.csv
     params:
       - seed
       - train
@@ -27,7 +28,7 @@ stages:
     deps:
       - src/evaluate.py
       - models/model.joblib
-      - ${data.prepared_dir}/test.csv
+      - data/prepared/test.csv
     params:
       - seed
     metrics:
