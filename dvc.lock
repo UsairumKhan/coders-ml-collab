@@ -1,0 +1,73 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python -m src.prepare
+    deps:
+    - path: data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
+      hash: md5
+      md5: 0f9de68e012bd3aed5fa7cdc9fc421af
+      size: 977501
+    - path: src/cleaning.py
+      hash: md5
+      md5: de843298522232839b3a4e60a370c71b
+      size: 266
+    - path: src/prepare.py
+      hash: md5
+      md5: 748fbb002e5f74dd2ca089f5e871c6af
+      size: 933
+    params:
+      params.yaml:
+        seed: 42
+        split.test_size: 0.2
+    outs:
+    - path: data/prepared
+      hash: md5
+      md5: 9f738e773cbd1f99cffe8a15befe124a.dir
+      size: 892809
+      nfiles: 2
+  train:
+    cmd: python -m src.train
+    deps:
+    - path: data/prepared/train.csv
+      hash: md5
+      md5: 9e05cc70cab5a1d95e6ecbfd5578cd63
+      size: 713870
+    - path: src/train.py
+      hash: md5
+      md5: 9e48afc29a5a77abf09298dc8c03ebba
+      size: 1254
+    params:
+      params.yaml:
+        seed: 42
+        train:
+          model: random_forest
+          n_estimators: 100
+          max_depth: 6
+    outs:
+    - path: models/model.joblib
+      hash: md5
+      md5: 903eb3ecdac1f5433ee972c5c4700cc8
+      size: 966050
+  evaluate:
+    cmd: python -m src.evaluate
+    deps:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 6d6851b7e3be9d94837cc17032db3c5f
+      size: 178939
+    - path: models/model.joblib
+      hash: md5
+      md5: 903eb3ecdac1f5433ee972c5c4700cc8
+      size: 966050
+    - path: src/evaluate.py
+      hash: md5
+      md5: 16e707181cef12cc2f2de591bca55972
+      size: 1718
+    params:
+      params.yaml:
+        seed: 42
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: ec8e82652b75eff0af296b10ebef9e72
+      size: 212
